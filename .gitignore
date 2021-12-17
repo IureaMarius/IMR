@@ -10,7 +10,7 @@ LAB1FIX/[Bb]uilds/
 LAB1FIX/[Ll]ogs/
 LAB1FIX/[Uu]ser[Ss]ettings/
 LAB1FIX/Packages
-
+SNKaRX/Library/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -71,3 +71,7 @@ LAB1FIX/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 # Temporary auto-generated Android Assets
 LAB1FIX/[Aa]ssets/[Ss]treamingAssets/aa.meta
 LAB1FIX/[Aa]ssets/[Ss]treamingAssets/aa/*
+*.asset
+*.asset.meta
+*.meta
+SNKaRX/Temp/UnityLockfile/
