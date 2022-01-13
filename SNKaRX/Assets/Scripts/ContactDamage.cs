@@ -5,7 +5,6 @@ using UnityEngine;
 public class ContactDamage : MonoBehaviour
 {
     // Start is called before the first frame update
-    private Collider collider;
     public int contactDamage;
     void Start()
     {

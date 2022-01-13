@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &462216312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 462216313}
+  - component: {fileID: 462216314}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &462216313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462216312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6490877940656329311}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &462216314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462216312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8619c89b236c948a9e948d854738a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tasks: []
+  gameBoardMesh: {fileID: 2056341657682543027}
 --- !u!1 &210046267498801822
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +60,7 @@ GameObject:
   - component: {fileID: 5793937560684081006}
   m_Layer: 0
   m_Name: BoardEdge
-  m_TagString: Untagged
+  m_TagString: BoardEdge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +168,7 @@ GameObject:
   - component: {fileID: 6959380109463734261}
   m_Layer: 0
   m_Name: GameBoard
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,6 +189,7 @@ Transform:
   - {fileID: 1083233447866338272}
   - {fileID: 6420589483250704653}
   - {fileID: 8793234010136841799}
+  - {fileID: 462216313}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -174,7 +220,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 97ee5fd7d4f2bd44fbec7a3cb58e0fed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -223,14 +269,88 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerObject: {fileID: 7062228804276031068}
-  segmentPrefab: {fileID: 4662376735494323593, guid: 6762f021706e7564b8d27683d3574d15,
-    type: 3}
-  numberOfSegments: 5
+  segmentPrefabs:
+  - {fileID: 5345171254776810887, guid: 4faa57a17334c4f439a6995769600e82, type: 3}
+  - {fileID: 7023652164059624222, guid: a54015cecf74359448ed6aece3351457, type: 3}
+  - {fileID: 457468027379539616, guid: ad4d4072a9779de4697c216d71428075, type: 3}
+  - {fileID: 6306355583298062749, guid: a48a48c960584a445b19ed2a2277a358, type: 3}
+  - {fileID: 3998437974317439433, guid: a871502ebfa0bd14da2173ad77af6ec1, type: 3}
+  - {fileID: 8607797052543463712, guid: da875160e7ea92f42830bc881e79ada5, type: 3}
+  - {fileID: 4669753634991457790, guid: 538fb06ce0dc2fd4a8f6e2da0e559728, type: 3}
+  - {fileID: 8757232040508077121, guid: e5b28600e480a3c43b1790d65b46106f, type: 3}
+  - {fileID: 3365579140329775890, guid: f0420b4ffb6c19246b905f41f19a1801, type: 3}
+  descriptions:
+  - Shoots projectile every second that deals 50 damage, stops at first enemy hit
+  - Shoots fast projectile dealing 20 damage that bounces to other enemies 3 times
+  - Shoots a burst of 3 shots dealing 15 damage each every second
+  - Spawns 3 creeps that rush the closest enemy every 1.5 seconds, dealing 15 damage
+    each
+  - Shoots a homing projectile dealing 30 damage each second
+  - Shoots a piercing projectile dealing 20 damage, that passese through all enemies
+    hit
+  - Shoots an orb of magic that deals 10 damage per 0.1 second to enemeis in it.
+  - Heals a unit for 50% of their HP every 2 seconds
+  - Heals 2 units for 20% of their HP every 3 seconds
+  UIColors:
+  - {r: 0, g: 1, b: 0.11764706, a: 1}
+  - {r: 0, g: 1, b: 0.11764706, a: 1}
+  - {r: 0.98039216, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.28235295, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.11764706, a: 1}
+  - {r: 0, g: 1, b: 0.11764706, a: 1}
+  - {r: 0.7921569, g: 0.23137255, b: 1, a: 1}
+  - {r: 1, g: 0.18431373, b: 0.81960785, a: 1}
+  - {r: 1, g: 0.18431373, b: 0.81960785, a: 1}
+  prices: 020000000100000001000000010000000100000001000000020000000100000003000000
+  names:
+  - Sniper
+  - Slinger
+  - Scout
+  - Host
+  - Telekinist
+  - Archer
+  - Arcanist
+  - Cleric
+  - Priest
+  currentMoney: 0
+  unitName: {fileID: 0}
+  tasks: []
+  boardMaterials:
+  - {fileID: 2100000, guid: ec4717d70dfdc2f48ae1a988c1a650a6, type: 2}
+  - {fileID: 2100000, guid: 5709539cb49a24047861e514a2935150, type: 2}
+  - {fileID: 2100000, guid: a705a308712f43746bbae820476999e3, type: 2}
+  - {fileID: 2100000, guid: 9e6726c8b97a68b449b332fcb1352e3e, type: 2}
+  - {fileID: 2100000, guid: 620e37510f03bdb478992289d0e7bf0d, type: 2}
+  - {fileID: 2100000, guid: 97ee5fd7d4f2bd44fbec7a3cb58e0fed, type: 2}
+  - {fileID: 2100000, guid: 2c8de4007c2cfd34188779cb835d88d2, type: 2}
+  - {fileID: 2100000, guid: b40a297701db1d148a7309ca661fdff2, type: 2}
+  playerWon: 0
+  fundsPerRound: 03000000060000000c0000000f000000140000001e0000003200000064000000c8000000
+  levels: 000000000000000000000000000000000000000000000000000000000000000000000000
+  counts: 090000000900000009000000090000000900000009000000090000000900000009000000
   minDistance: 0.0004
   speed: 0.15
-  rotationSpeed: 60
+  rotationSpeed: 120
   LeftButton: {fileID: 0}
   RightButton: {fileID: 0}
+  enemySpawner: {fileID: 462216314}
+  enemies:
+  - {fileID: 3345074665450211571, guid: 7876f1196b5f7674eae172bae44ecc5a, type: 3}
+  - {fileID: 8662490033437495511, guid: bddaedb48a4342145893bb1b7e189497, type: 3}
+  - {fileID: 4283350625822452625, guid: 461b22c1a6d284744ab5f06d13bddb24, type: 3}
+  menu: {fileID: 0}
+  gameOverTitle: {fileID: 0}
+  gameOverButton: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  seeSegmentButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  description: {fileID: 0}
+  selectedPrefabs: []
+  boughtUnitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6203873432052655033
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +366,7 @@ GameObject:
   - component: {fileID: 9028328067560005986}
   m_Layer: 0
   m_Name: BoardEdge
-  m_TagString: Untagged
+  m_TagString: BoardEdge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -350,7 +470,7 @@ GameObject:
   - component: {fileID: 689452285132954403}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -363,7 +483,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7062228804276031068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6490877940656329311}
@@ -384,7 +504,7 @@ GameObject:
   - component: {fileID: 7229831987566958565}
   m_Layer: 0
   m_Name: BoardEdge
-  m_TagString: Untagged
+  m_TagString: BoardEdge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -492,7 +612,7 @@ GameObject:
   - component: {fileID: 1960914134549548583}
   m_Layer: 0
   m_Name: BoardEdge
-  m_TagString: Untagged
+  m_TagString: BoardEdge
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -30,7 +30,8 @@ public class BulletScript : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Enemies":
-                Physics.IgnoreCollision(collision.collider, collider);
+                if(collider != null)
+                    Physics.IgnoreCollision(collision.collider, collider);
                 break;
             case "Player":
                 Destroy(gameObject);

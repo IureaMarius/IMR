@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 /// <summary>
@@ -16,6 +16,12 @@ public class PlaceOnPlane : MonoBehaviour
     [SerializeField]
     [Tooltip("Instantiates this prefab on a plane at the touch location.")]
     GameObject m_PlacedPrefab;
+
+    public GameObject canvas;
+    private void Start()
+    {
+        canvas.SetActive(false);
+    }
 
     /// <summary>
     /// The prefab to instantiate on touch.
@@ -65,6 +71,7 @@ public class PlaceOnPlane : MonoBehaviour
 
                 if (spawnedObject == null)
                 {
+                    canvas.SetActive(true);
                     spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
                 }
                 else

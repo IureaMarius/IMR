@@ -11,8 +11,11 @@ public class EnemySpawnerScript : MonoBehaviour
     private SpawnerTask currentTask;
     private float currentCountdown = 0;
     public MeshRenderer gameBoardMesh;
+    private List<GameObject> spawnedEnemies = new List<GameObject>();
+    private MainGameLoop game;
     void Start()
     {
+        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<MainGameLoop>();
         
     }
     public void AddSpawnerTask(SpawnerTask task)
@@ -57,7 +60,9 @@ public class EnemySpawnerScript : MonoBehaviour
             GameObject objectToSpawn = GetRandomEnemy(task);
             task.objectsToSpawn[objectToSpawn]--;
             var newEnemy = Instantiate(objectToSpawn);
-            newEnemy.transform.position = bounds.center + new Vector3(Random.Range(-bounds.extents.x, bounds.extents.x), objectToSpawn.transform.lossyScale.y / 2, Random.Range(-bounds.extents.z, bounds.extents.z));
+            newEnemy.transform.position = bounds.center + new Vector3(Random.Range(-bounds.extents.x / 2, bounds.extents.x / 2), objectToSpawn.transform.lossyScale.y / 2, Random.Range(-bounds.extents.z / 2, bounds.extents.z / 2));
+            newEnemy.GetComponent<BaseEnemyScript>().enemySpawner = this;
+            spawnedEnemies.Add(newEnemy);
             nrOfEnemies--;
             task.enemiesToSpawn--;
         }
@@ -70,5 +75,16 @@ public class EnemySpawnerScript : MonoBehaviour
         List<GameObject> gameObjects = new List<GameObject>(task.objectsToSpawn.Keys);
         gameObjects.Where(x => task.objectsToSpawn[x] > 0);
         return gameObjects[Random.Range(0, gameObjects.Count)];
+    }
+    public void EnemyKilled(GameObject obj)
+    {
+        if (spawnedEnemies.Contains(obj))
+        {
+            spawnedEnemies.Remove(obj);
+        }
+        if (spawnedEnemies.Count == 0 && currentTask == null)
+            game.SetUIElements();
+            
+
     }
 }

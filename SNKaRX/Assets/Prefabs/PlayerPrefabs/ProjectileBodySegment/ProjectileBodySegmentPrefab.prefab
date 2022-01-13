@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &763863850481545230
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1208923992199606822, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ff12d20da365b547a938edf86d0aa4d, type: 2}
+    - target: {fileID: 1745862063377899127, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745862063377899127, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4662376735494323593, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_Name
+      value: ProjectileBodySegmentPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885373605769539104, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885373605769539104, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885373605769539104, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885373605769539104, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885373605769539104, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885373605769539104, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885373605769539104, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885373605769539104, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885373605769539104, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885373605769539104, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885373605769539104, guid: 6762f021706e7564b8d27683d3574d15,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9082445483520001100, guid: 6762f021706e7564b8d27683d3574d15, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 6762f021706e7564b8d27683d3574d15, type: 3}
+--- !u!1 &5345171254776810887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4662376735494323593, guid: 6762f021706e7564b8d27683d3574d15,
+    type: 3}
+  m_PrefabInstance: {fileID: 763863850481545230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8011073550533823391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5345171254776810887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e58739338a848c41b71ab615c1d4db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7139530226672602917, guid: 8c2c32ad1a66be846b76b3d91d5ab6ab,
+    type: 3}
+  fireDelay: 1
+  burstSize: 1
+  burstDelay: 0
+  projectileSpawnOffset: 0
+  homing: 0
+  bounces: 0
+  dot: 0
+  dotDamage: 0
+  dotTick: 0
+  piercing: 0
+  radius: 0
+  retargeting: 0
+  speed: 0.2
+  damage: 50
